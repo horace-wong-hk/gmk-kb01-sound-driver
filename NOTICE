@@ -1,0 +1,45 @@
+NOTICE
+======
+
+The driver binaries, firmware, INF and CAT packages, wake-on-voice artifacts,
+and related files in this archive are copyright their respective owners,
+including:
+
+  - Intel Corporation
+    (Intel Smart Sound Technology / SST, Offload Engine Driver, Display Audio,
+    digital microphone, and related components)
+  - Everest Semiconductor Co., Ltd
+    (ES8326 / ES8336 codec driver, APO, audio service, and SST APO extensions)
+  - The original equipment manufacturer of the GMK KB01 / GB01 factory
+    recovery image
+
+These files are provided only as a personal archive for use with the GMK KB01
+(also referred to as GB01 in the factory recovery image).
+
+This repository does not grant an open-source licence. It does not confer any
+right to redistribute, modify, reverse engineer, or use the files except as
+already allowed by the original vendors' terms, and for personal installation
+on a GMK KB01.
+
+No warranty is provided, express or implied. Use at your own risk.
+
+
+聲明
+====
+
+本存檔內的驅動程式二進位檔、韌體、INF／CAT 套件、語音喚醒檔案及相關檔案，
+版權仍屬各自擁有人所有，包括：
+
+  - Intel Corporation
+    （Intel Smart Sound Technology／SST、Offload Engine Driver、顯示音效、
+    數碼咪高峰及相關元件）
+  - Everest Semiconductor Co., Ltd
+    （ES8326／ES8336 編碼器驅動程式、APO、音效服務，以及 SST APO 延伸）
+  - GMK KB01／GB01 原廠還原映像的原始設備製造商
+
+這些檔案只作為 GMK KB01（原廠映像亦稱為 GB01）的個人存檔提供。
+
+本專案並不授予開放原始碼授權，亦不賦予重新分發、修改、還原工程，
+或在原廠條款及 GMK KB01 個人安裝用途以外使用這些檔案的權利。
+
+並不提供任何明示或暗示保證，使用風險自負。

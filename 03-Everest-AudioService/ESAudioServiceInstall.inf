@@ -1,0 +1,86 @@
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = SoftwareComponent
+ClassGuid   = {5c4c3332-344d-483c-8739-259e934c9cc8}
+Provider    = %ProviderName%
+DriverVer = 11/18/2021,2.0.1.2
+CatalogFile = ESAudioServiceInstall.cat
+PnpLockdown=1
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+ESAudioService.exe = 1
+
+[DestinationDirs]
+DefaultDestDir = 13
+ESAuDriver_Service.NT.Copy = 13
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTamd64
+
+[Standard.NTamd64]
+%ESAuDriver.DeviceDesc%=ESAuDriver_Service, SWC\ESSX_8336&SCPV_2012
+
+[ESAuDriver_Service.NT]
+CopyFiles=ESAuDriver_Service.Copy
+AddReg   =ESAuDriver_Service_RegAdd
+
+[ESAuDriver_Service_RegAdd]
+HKCR,ESAudio,HeadphoneMute,0x00010001,0
+HKCR,ESAudio,HeadphoneVolume,0x00010001,60
+HKCR,ESAudio,SpeakerMute,0x00010001,0
+HKCR,ESAudio,SpeakerVolume,0x00010001,60
+HKCR,ESAudio,VolumeLimit,0x00010001,30 ;only work when bVolumeLimitPopupWindowUsed is 1
+HKCR,ESAudio,ServiceVersion,0x00010001,0x42 ;32bits service version control code, explanations:
+;|*|0000            |*|0   	       	   |*|0               |*|0                           |*|0
+;|*|ConnectionType  |*|PlaceHolder     |*|bHDMIPriority   |*|bBeepWindowUsed             |*|bESAudioServiceSwitchUsed
+;|*|0		        |*|0               |*|0			      |0		   |0		         |*|0					   |*|0					      |0					  
+;|*|bMuteStaeReport |*|bStartupInitial |*|bSetProperty    |bFxProperty |bPropertyInitial |*|bSwitchPopupWindowUsed |*|bVolumeCallbackRegister |bVolumeLimitPopupWindowUsed
+;{
+;    eConnTypeUnknown,
+;    eConnType3Point5mm,
+;    eConnTypeQuarter,
+;    eConnTypeAtapiInternal,
+;    eConnTypeRCA,
+;    eConnTypeOptical,
+;    eConnTypeOtherDigital,
+;    eConnTypeOtherAnalog,
+;    eConnTypeMultichannelAnalogDIN,
+;    eConnTypeXlrProfessional,
+;    eConnTypeRJ11Modem,
+;    eConnTypeCombination
+;} ConnectionType;
+
+[ESAuDriver_Service.Copy]
+ESAudioService.exe
+
+[ESAuDriver_Service.NT.HW]
+
+[ESAuDriver_Service.NT.Interfaces]
+
+[ESAuDriver_Service.NT.Services]
+AddService = ,%SPSVCINST_ASSOCSERVICE%
+AddService = ESAudioService,%SPSVCSINST_STARTSERVICE%, ESAuService_Inst
+
+[ESAuService_Inst]
+DisplayName    = %ESAuService.Dis%
+Description    = %ESAuService.Desc%
+ServiceType    = %SERVICE_WIN32_OWN_PROCESS%  ; SERVICE_KERNEL_DRIVER
+StartType      = %SERVICE_AUTO_START%         ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = """%13%\ESAudioService.exe"""
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+SPSVCSINST_STARTSERVICE= 0x00000800
+ESAuService.Dis= "Everest Audio Service Component"
+ESAuService.Desc= "Everest Audio Service Component"
+SERVICE_WIN32_OWN_PROCESS= 0x00000010
+SERVICE_AUTO_START= 0x00000002
+ManufacturerName="Everest Semiconductor Co., Ltd" ;TODO: Replace with your manufacturer name
+ProviderName         = "Everest Semiconductor Co., Ltd"
+DiskName = "ESAuDriver Installation Disk"
+ESAuDriver.DeviceDesc = "Everest Audio Service Component"
+ESAuDriver.SVCDESC = "Everest Audio Service Component"

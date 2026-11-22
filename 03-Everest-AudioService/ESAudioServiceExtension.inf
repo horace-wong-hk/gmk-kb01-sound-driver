@@ -1,0 +1,86 @@
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = Extension
+ClassGuid   = {e2f84ce7-8efa-411c-aa69-97454ca4cb57}
+Provider    = %ProviderName%
+ExtensionId = {1d641578-54d2-404d-85de-79bb01461ac2}
+CatalogFile = ESAudioServiceExtension.cat
+PnpLockDown = 1
+DriverVer = 11/18/2021,2.0.1.2
+
+[Manufacturer]
+%MfgName% = DeviceExtensions,NTamd64
+
+[DeviceExtensions.NTamd64]
+%Device.ExtensionDesc%=ESAuDriver_Device, ACPI\ESSX8326 ; TODO: edit hw-id
+%Device.ExtensionDesc%=ESAuDriver_Device, ACPI\ESSX8336 ; TODO: edit hw-id
+
+;Emdoor
+%Device.ExtensionDesc%=ESAuDriver_Device, ACPI\VEN_ESSX&DEV_8326&SUBSYS_278202A0 ; Emdoor CM618 for dolby, 8326, no Oscillator
+
+
+%Device.ExtensionDesc%=ESAuDriver_Device, ACPI\VEN_ESSX&DEV_8326&SUBSYS_27821A30 ; Emdoor TG820/TG526/TG819, 8326, no Oscillator
+%Device.ExtensionDesc%=ESAuDriver_Device, ACPI\VEN_ESSX&DEV_8326&SUBSYS_27821A40 ; Emdoor JS8318, 8326, no Oscillator
+
+%Device.ExtensionDesc%=ESAuDriver_Device, ACPI\VEN_ESSX&DEV_8326&SUBSYS_27821A20 ; Emdoor IC918, 8326, no Oscillator
+
+%Device.ExtensionDesc%=ESAuDriver_Device, ACPI\VEN_ESSX&DEV_8326&SUBSYS_27821A00 ; Emdoor IG116_200B_V2.0, 8326, no Oscillator
+%Device.ExtensionDesc%=ESAuDriver_Device, ACPI\VEN_ESSX&DEV_8326&SUBSYS_27821A10 ; Emdoor CM819, 8326, no Oscillator
+%Device.ExtensionDesc%=ESAuDriver_Device, ACPI\VEN_ESSX&DEV_8326&SUBSYS_27821A60 ; Emdoor CF819, 8326, no Oscillator
+
+%Device.ExtensionDesc%=ESAuDriver_Device, ACPI\VEN_ESSX&DEV_8336&SUBSYS_27820B60	;Emdoor CM525-S(CF), 8336, has Oscillator
+%Device.ExtensionDesc%=ESAuDriver_Device, ACPI\VEN_ESSX&DEV_8336&SUBSYS_27820B00	;Emdoor IG136 8336, has Oscillator
+%Device.ExtensionDesc%=ESAuDriver_Device, ACPI\VEN_ESSX&DEV_8336&SUBSYS_27820110	;Emdoor CM525-PRO_V2.08336, has Oscillator
+
+%Device.ExtensionDesc%=ESAuDriver_Device, ACPI\VEN_ESSX&DEV_8336&SUBSYS_27820010	;Emdoor CM525_V2.0/CM218_V3.0 8336, no Oscillator
+%Device.ExtensionDesc%=ESAuDriver_Device, ACPI\VEN_ESSX&DEV_8336&SUBSYS_27820000	;Emdoor IG218/IG118/G8811 8336, no Oscillator
+%Device.ExtensionDesc%=ESAuDriver_Device, ACPI\VEN_ESSX&DEV_8336&SUBSYS_27820060	;Emdoor CF525_V2.0 8336, no Oscillator
+
+;Marata
+%Device.ExtensionDesc%=ESAuDriver_Device, ACPI\VEN_ESSX&DEV_8336&SUBSYS_0x10EC1234 ; marata for equalizer
+
+;WEIBU_RD1
+%Device.ExtensionDesc%=ESAuDriver_Device, ACPI\VEN_ESSX&DEV_8326&SUBSYS_1C6CB001 ;WEIBU 1C6CB001 ,XU133SR631, 8326, no Oscillator
+%Device.ExtensionDesc%=ESAuDriver_Device, ACPI\VEN_ESSX&DEV_8326&SUBSYS_1C6CC001 ;WEIBU 1C6CC001 ,TU140TR120, 8326, no Oscillator
+%Device.ExtensionDesc%=ESAuDriver_Device, ACPI\VEN_ESSX&DEV_8326&SUBSYS_1C6CC002 ;WEIBU 1C6CC002 ,T140JR110, 8326, no Oscillator
+
+;WEIBU_RD2
+%Device.ExtensionDesc%=ESAuDriver_Device, ACPI\VEN_ESSX&DEV_8326&SUBSYS_1C6C1A20 ;WEIBU 1C6C1A20 ,8326, no Oscillator
+
+;MAI DI JIE
+%Device.ExtensionDesc%=ESAuDriver_Device, ACPI\VEN_ESSX&DEV_8326&SUBSYS_12970123 ;MAI DI JIE 12970123, 8326, no Oscillator
+
+;COITECH
+%Device.ExtensionDesc%=ESAuDriver_Device, ACPI\VEN_ESSX&DEV_8326&SUBSYS_58432102 ;COITECH 58432102, 8326, no Oscillator
+
+;EII-TECH
+%Device.ExtensionDesc%=ESAuDriver_Device, ACPI\VEN_ESSX&DEV_8326&SUBSYS_02F3F001 ;EII-TECH 02F3F001,GLK 8326, no Oscillator
+
+
+[ESAuDriver_Device]
+
+[ESAuDriver_Device.HW]
+
+[ESAuDriver_Device.Interfaces]
+
+[ESAuDriver_Device.Services]
+
+;[ESAuDriver_Device.Components]
+;AddComponent = ESAudioService,,Service_AddComponent
+
+;[Service_AddComponent]
+;ComponentIDs = ESSX_8336&SCPV_2012
+;Description = "Everest Audio Service Component"
+
+[ESAuDriver_Device.Devices]
+AddDevice = ESAudioService,,Service_AddDevice
+
+[Service_AddDevice]
+HardwareIds = SWC\ESSX_8336&SCPV_2012
+Description = "Everest Audio Service Component"
+Capabilities = 0x00000008 ; SWDeviceCapabilitiesDriverRequired
+
+[Strings]
+MfgName              = "Everest"
+ProviderName         = "Everest Semiconductor Co., Ltd"
+Device.ExtensionDesc = "Intel ISST Extention (by Everest)"
